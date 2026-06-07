@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Logs
+logs/
+
+# VS Code (保留 settings.json 但忽略其他)
+.vscode/!settings.json
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Config (如果包含敏感信息可取消注释)
+# config/config.json

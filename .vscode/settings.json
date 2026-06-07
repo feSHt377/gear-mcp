@@ -1,0 +1,12 @@
+{
+    "github.copilot.mcp.agent": {
+        "servers": {
+            "aitools": {
+                "command": "e:/Docs/Aitools/.venv/Scripts/python.exe",
+                "args": [
+                    "e:\\Docs\\Aitools\\mcp_server.py"
+                ]
+            }
+        }
+    }
+}
