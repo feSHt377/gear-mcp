@@ -244,7 +244,7 @@ class FunctionCallingTester:
             print(f"⏱  响应耗时: {elapsed:.2f} 秒")
             print("=" * 50 + "\n")
             
-            return full_response, all_tool_calls, elapsed
+            return full_response, all_tool_calls, elapsed\
             
         except Exception as e:
             print(f"请求异常: {e}")
