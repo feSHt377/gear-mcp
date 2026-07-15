@@ -13,7 +13,7 @@ from tools import execute_tool, get_tool_schema_list
 
 # Windows 的旧控制台默认 GBK，无法输出脚本中的 emoji 和 UTF-8 文本。
 if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[attr-defined]
 
 
 class FunctionCallingTester:
@@ -331,7 +331,7 @@ class FunctionCallingTester:
         payload = {
             "model": self.model,
             "messages": messages,
-            "tools": get_tool_schema_list(tools),
+            "tools": get_tool_schema_list(),
             "stream": True  # 启用流式输出
         }
         
@@ -592,7 +592,8 @@ def main():
         parser.error("--max-rounds 必须大于 0")
 
     tester.run_test_suite(test_cases, max_rounds=args.max_rounds)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    exit(main() or 0)

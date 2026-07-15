@@ -9,14 +9,15 @@ build/
 
 # Virtual Environment
 .venv/
+.venv-fastmcp/
 venv/
 env/
 
 # Logs
 logs/
 
-# VS Code (保留 settings.json 但忽略其他)
-.vscode/!settings.json
+# VS Code
+.vscode/
 
 # IDE
 .idea/

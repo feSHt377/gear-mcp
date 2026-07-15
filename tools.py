@@ -21,14 +21,37 @@ mcp = FastMCP("aitools")
 LOG_DIR = "logs"
 HISTORY_FILE = os.path.join(LOG_DIR, "tool_call_history.json")
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    filename=os.path.join(LOG_DIR, "tool_calls.log"),
-    filemode="a",
-    encoding="utf-8",
-)
-logger = logging.getLogger("aitools")
+
+def _setup_logger():
+    """配置日志记录器，只写入文件，不输出到控制台"""
+    logger = logging.getLogger("aitools")
+    # 清除现有的 handlers
+    logger.handlers.clear()
+    logger.setLevel(logging.INFO)
+    
+    # 创建文件 handler
+    os.makedirs(LOG_DIR, exist_ok=True)
+    fh = logging.FileHandler(
+        os.path.join(LOG_DIR, "tool_calls.log"),
+        mode="a",
+        encoding="utf-8"
+    )
+    fh.setLevel(logging.INFO)
+    
+    # 设置格式
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    fh.setFormatter(formatter)
+    
+    # 添加 handler，禁用传播到根 logger
+    logger.addHandler(fh)
+    logger.propagate = False
+    
+    return logger
+
+
+logger = _setup_logger()
 
 
 def _ensure_log_dir() -> None:
