@@ -31,3 +31,9 @@ Thumbs.db
 
 # Config (如果包含敏感信息可取消注释)
 # config/config.json
+
+# 日志文件（.txt）
+*.txt
+
+# 隐藏文件（以 . 开头）
+.*
